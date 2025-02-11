@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Feliz San Valentín - Página Única</title>
+  <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+  <!-- Tu hoja de estilo externa -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Íconos de FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    /* Clase para ocultar secciones */
+    .hidden {
+      display: none;
+    }
+    /* -------------------- */
+    /* SECCIÓN 1: LA CARTA */
+    /* -------------------- */
+    /* Contenedor principal de la "primera página" */
+    #index-container {
+      /* Puedes ajustar estilos si lo deseas */
+    }
+    /* Botón "Nosotros" en la parte superior derecha */
+    #nosotros-button {
+      display: none; /* Oculto hasta que se hace clic en el sobre */
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    #nosotros-button:hover {
+      background-color: #e91e63;
+    }
+
+    /* --------------------- */
+    /* SECCIÓN 2: EL MARCO  */
+    /* --------------------- */
+    #ascii-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #F8C8DC;
+    }
+    .hidden {
+      display: none !important;
+    }
+    /* Texto ASCII */
+    pre {
+      font-family: monospace;
+      font-size: 4px; 
+      line-height: 4.5px; 
+      margin: 0;
+      letter-spacing: -0.5px;
+      color: #000;
+    }
+    /* Marco ASCII */
+    .marco {
+      border: 8px solid #8B4513;
+      padding: 10px;
+      background-color: #FFDDEE;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 1000px;
+      min-height: 800px;
+      overflow: auto;
+    }
+    /* Botón para volver a la sección "índice" */
+    #home-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #home-button:hover {
+      background-color: #e91e63;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- SECCIÓN 1: "INDEX" -->
+  <div id="index-container">
+    <!-- Botón "Nosotros" que se muestra al hacer clic en el sobre -->
+    <button id="nosotros-button">Nosotros</button>
+
+    <!-- Reproductor de música invisible -->
+    <!-- Quitar el atributo "controls" y usar display:none -->
+    <audio id="background-music" autoplay loop style="display:none;">
+      <source src="musica/fondo.mp3" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Botón invisible para autoclick -->
+    <button id="autoplay-button" style="display:none;">Reproducir Audio</button>
+
+    <!-- Contenedor del sobre -->
+    <div class="valentines-day" id="valentines-container">
+      <div class="envelope"></div>
+      <div class="heart"></div>
+      <div class="text">¡FELIZ DÍA DE<br>SAN VALENTÍN!</div>
+      <div class="front"></div>
+    </div>
+
+    <!-- Contenido de la carta -->
+    <div id="card" class="card-content">
+      <div class="side one">
+        <i class="fas fa-heart"></i>
+      </div>
+      <div class="side two" id="message-one">
+        <h2>💞 Más Amor para Myley 💞</h2>
+        <p>🌹 Para Milagros, mi luz eterna 🌹</p>
+        <p>
+          En este mundo de sombras y fuego 🔥,  
+          tú eres la luna que ilumina mi cielo. 🌙✨  
+          Como Tanjiro prometió a Nezuko,  
+          juro protegerte, pase lo que pase. 🗡️❤️  
+        </p>
+        <p>
+          En cada batalla, en cada suspiro,  
+          como Naruto, nunca me rindo. 🍥🔥  
+          Porque eres mi "Dattebayo" ☀️, mi destino,  
+          mi razón de luchar… y mi camino.  
+        </p>
+        <p>
+          Como en "Shrek", sin máscaras ni cuentos, 🐉🏰  
+        </p>
+
+        <!-- Botón para mostrar la parte 2 -->
+        <div class="button-container">
+          <button id="next-button" class="next-button"> ==> 💖</button>
+        </div>
+      </div>
+      
+      <div class="side two hidden" id="message-two">
+        <h2>🌷🌷🌷</h2>
+        <p>
+          Eres mi estrella, mi One Piece perdido, 🌊🏴‍☠️  
+          mi hogar, mi aventura, mi mayor suspiro.  
+          Si el tiempo nos separa, como en Your Name,  
+          buscaré cada universo hasta encontrarte otra vez. 💫💞  
+        </p>
+        <p>
+          Así que en este San Valentín, Myley querida,  
+          quiero que sepas, por toda la vida:  
+          "Contigo, quiero un infinito" ♾️💖  
+          porque "Eres mi persona"… y mi más lindo mito. 🌹✨  
+        </p>
+        <p>
+          ¡Feliz San Valentín!  
+        </p>
+        <p>
+          Con todo mi amor,<br>
+          Boa 💘
+        </p>
+        
+        <!-- Botón para regresar a la parte 1 -->
+        <div class="button-container">
+          <button id="back-button" class="next-button">Volver al inicio 💕</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2: "MARCO" (OCULTA AL INICIO) -->
+  <div id="ascii-container" class="hidden">
+    <div class="marco">
+      <pre id="asciiArt"></pre>
+    </div>
+    <button id="home-button">Volver a la Página Principal</button>
+  </div>
+
+  <!-- jQuery si lo necesitas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Tu archivo main.js (si tienes lógica adicional) -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    /*******************************************************
+     * REFERENCIAS
+     *******************************************************/
+    const audio = document.getElementById('background-music');
+    const autoPlayBtn = document.getElementById('autoplay-button');
+    const valentinesContainer = document.getElementById('valentines-container');
+    const nosotrosButton = document.getElementById('nosotros-button');
+
+    /*******************************************************
+     * 1. INTENTAR INICIAR REPRODUCCIÓN APENAS CARGA PÁGINA
+     *    usando un "autoclick" oculto
+     *******************************************************/
+    window.addEventListener('load', () => {
+      // Forzamos "click" en el botón oculto para simular interacción
+      autoPlayBtn.click();
+    });
+
+    // Cuando se hace "click" en el botón oculto, reiniciamos el audio y lo reproducimos
+    autoPlayBtn.addEventListener('click', () => {
+      audio.currentTime = 0;
+      audio.play().catch((err) => {
+        console.warn("Autoplay bloqueado por el navegador:", err);
+      });
+    });
+
+    /*******************************************************
+     * 2. MOSTRAR BOTÓN "NOSOTROS" AL CLIC EN EL SOBRE
+     *    (Ya no reproducimos nada aquí)
+     *******************************************************/
+    valentinesContainer.addEventListener('click', () => {
+      // Solo mostramos el botón "Nosotros"
+      nosotrosButton.style.display = "block";
+    });
+
+    /*******************************************************
+     * 3. IR DE "INDEX" → "MARCO" (ASCII)
+     *******************************************************/
+    nosotrosButton.addEventListener("click", () => {
+      // Oculta la sección de index
+      document.getElementById('index-container').classList.add('hidden');
+      // Muestra la sección ASCII
+      document.getElementById('ascii-container').classList.remove('hidden');
+      // Carga la imagen en ASCII
+      loadASCII();
+    });
+
+    /*******************************************************
+     * 4. NAVEGACIÓN ENTRE PARTES DE LA CARTA
+     *******************************************************/
+    document.getElementById('next-button').addEventListener('click', () => {
+      document.getElementById('message-one').classList.add('hidden');
+      document.getElementById('message-two').classList.remove('hidden');
+    });
+
+    document.getElementById('back-button').addEventListener('click', () => {
+      document.getElementById('message-two').classList.add('hidden');
+      document.getElementById('message-one').classList.remove('hidden');
+    });
+
+    /*******************************************************
+     * 5. BOTÓN "Volver a la Página Principal" EN ASCII
+     *******************************************************/
+    document.getElementById('home-button').addEventListener('click', () => {
+      document.getElementById('ascii-container').classList.add('hidden');
+      document.getElementById('index-container').classList.remove('hidden');
+    });
+
+    /*******************************************************
+     * 6. FUNCIÓN PARA CARGAR Y CONVERTIR IMAGEN A ASCII
+     *******************************************************/
+    const ASCII_CHARS = "@#S%?*+;:,.";
+    const IMAGE_PATH = "assets/img/pareja.png";
+
+    function loadASCII() {
+      const img = new Image();
+      img.crossOrigin = "anonymous"; // por si lo necesitas
+      img.src = IMAGE_PATH;
+      img.onload = () => {
+        document.getElementById("asciiArt").textContent = imageToAscii(img);
+      };
+    }
+
+    function imageToAscii(img) {
+      const width = 380; 
+      const height = Math.floor(width * (img.height / img.width) * 0.32);
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext("2d");
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(img, 0, 0, width, height);
+
+      const imageData = ctx.getImageData(0, 0, width, height);
+      return generateASCII(imageData);
+    }
+
+    function generateASCII(imageData) {
+      const { data, width, height } = imageData;
+      let asciiOutput = "";
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const i = (y * width + x) * 4;
+          const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+          const index = Math.floor((avg / 255) * (ASCII_CHARS.length - 1));
+          asciiOutput += ASCII_CHARS[index];
+        }
+        asciiOutput += "\n";
+      }
+      return asciiOutput;
+    }
+  </script>
+</body>
+</html>
