@@ -99,14 +99,10 @@
     <button id="nosotros-button">Nosotros</button>
 
     <!-- Reproductor de música invisible -->
-    <!-- Quitar el atributo "controls" y usar display:none -->
-    <audio id="background-music" autoplay loop style="display:none;">
+    <audio id="background-music" loop style="display:none;">
       <source src="musica/fondo.mp3" type="audio/mpeg">
       Tu navegador no soporta el elemento de audio.
     </audio>
-
-    <!-- Botón invisible para autoclick -->
-    <button id="autoplay-button" style="display:none;">Reproducir Audio</button>
 
     <!-- Contenedor del sobre -->
     <div class="valentines-day" id="valentines-container">
@@ -194,38 +190,24 @@
      * REFERENCIAS
      *******************************************************/
     const audio = document.getElementById('background-music');
-    const autoPlayBtn = document.getElementById('autoplay-button');
     const valentinesContainer = document.getElementById('valentines-container');
     const nosotrosButton = document.getElementById('nosotros-button');
 
     /*******************************************************
-     * 1. INTENTAR INICIAR REPRODUCCIÓN APENAS CARGA PÁGINA
-     *    usando un "autoclick" oculto
-     *******************************************************/
-    window.addEventListener('load', () => {
-      // Forzamos "click" en el botón oculto para simular interacción
-      autoPlayBtn.click();
-    });
-
-    // Cuando se hace "click" en el botón oculto, reiniciamos el audio y lo reproducimos
-    autoPlayBtn.addEventListener('click', () => {
-      audio.currentTime = 0;
-      audio.play().catch((err) => {
-        console.warn("Autoplay bloqueado por el navegador:", err);
-      });
-    });
-
-    /*******************************************************
-     * 2. MOSTRAR BOTÓN "NOSOTROS" AL CLIC EN EL SOBRE
-     *    (Ya no reproducimos nada aquí)
+     * 1. REPRODUCIR MÚSICA Y MOSTRAR BOTÓN "NOSOTROS" AL CLIC EN EL SOBRE
      *******************************************************/
     valentinesContainer.addEventListener('click', () => {
-      // Solo mostramos el botón "Nosotros"
+      // Reproducir música
+      audio.play().catch((error) => {
+        console.error("Error al reproducir audio:", error);
+      });
+      
+      // Mostrar el botón "Nosotros"
       nosotrosButton.style.display = "block";
     });
 
     /*******************************************************
-     * 3. IR DE "INDEX" → "MARCO" (ASCII)
+     * 2. IR DE "INDEX" → "MARCO" (ASCII)
      *******************************************************/
     nosotrosButton.addEventListener("click", () => {
       // Oculta la sección de index
@@ -237,7 +219,7 @@
     });
 
     /*******************************************************
-     * 4. NAVEGACIÓN ENTRE PARTES DE LA CARTA
+     * 3. NAVEGACIÓN ENTRE PARTES DE LA CARTA
      *******************************************************/
     document.getElementById('next-button').addEventListener('click', () => {
       document.getElementById('message-one').classList.add('hidden');
@@ -250,7 +232,7 @@
     });
 
     /*******************************************************
-     * 5. BOTÓN "Volver a la Página Principal" EN ASCII
+     * 4. BOTÓN "Volver a la Página Principal" EN ASCII
      *******************************************************/
     document.getElementById('home-button').addEventListener('click', () => {
       document.getElementById('ascii-container').classList.add('hidden');
@@ -258,7 +240,7 @@
     });
 
     /*******************************************************
-     * 6. FUNCIÓN PARA CARGAR Y CONVERTIR IMAGEN A ASCII
+     * 5. FUNCIÓN PARA CARGAR Y CONVERTIR IMAGEN A ASCII
      *******************************************************/
     const ASCII_CHARS = "@#S%?*+;:,.";
     const IMAGE_PATH = "assets/img/pareja.png";
